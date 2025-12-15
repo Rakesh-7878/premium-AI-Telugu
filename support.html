@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support | Premium AI Telugu</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #0a0a0a;
+            color: #eaeaea;
+        }
+
+        header {
+            background: #111;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin: 0;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 60px auto;
+            background: #141414;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid #222;
+        }
+
+        .container h2 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .description {
+            font-size: 15px;
+            color: #bdbdbd;
+            margin-bottom: 30px;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .support-box {
+            background: #1b1b1b;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .label {
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 20px;
+            background: #101010;
+            color: #e7e7e7;
+            font-size: 14px;
+            border: 1px solid #242424;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border: 1px solid #4c8bff;
+            box-shadow: 0 0 8px rgba(76, 139, 255, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background: linear-gradient(135deg, #4c8bff, #0057ff);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.85;
+            transform: scale(1.02);
+        }
+
+        .email-box {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 14px;
+            color: #bbbbbb;
+        }
+
+        .email-box span {
+            color: #4c8bff;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Premium AI Telugu - Support</h1>
+</header>
+
+<div class="container">
+    <h2>We're Here to Help</h2>
+    <p class="description">If you have any issues, questions, or need assistance, feel free to contact us using the support form below.</p>
+
+    <form class="support-box">
+        <label class="label">Your Name</label>
+        <input type="text" name="name" placeholder="Enter your name" required />
+
+        <label class="label">Your Email</label>
+        <input type="email" name="email" placeholder="Enter your email" required />
+
+        <label class="label">Your Message</label>
+        <textarea name="message" rows="5" placeholder="Describe your issue..." required></textarea>
+
+        <button type="submit">Submit Request</button>
+    </form>
+
+    <div class="email-box">
+        Or email us directly at <span>funpurpose78@gmail.com</span>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.support-box');
+    const submitButton = document.querySelector('button[type="submit"], button');
+    const inputs = document.querySelectorAll('input, textarea');
+
+    // Handle form submission
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const name = document.querySelector('input[placeholder="Enter your name"]').value.trim();
+        const email = document.querySelector('input[placeholder="Enter your email"]').value.trim();
+        const message = document.querySelector('textarea').value.trim();
+
+        // Validate form
+        if (!name || !email || !message) {
+            showMessage('Please fill in all fields', 'error');
+            return;
+        }
+
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showMessage('Please enter a valid email address', 'error');
+            return;
+        }
+
+        // Disable button and show loading
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+
+        try {
+            console.log('Submitting form data:', { name, email, message });
+
+            const response = await fetch('/api/support', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    message: message
+                })
+            });
+
+            console.log('Response status:', response.status);
+            console.log('Response headers:', response.headers);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('Response data:', data);
+
+            if (data.success) {
+                showMessage(data.message, 'success');
+                // Clear form
+                inputs.forEach(input => input.value = '');
+            } else {
+                showMessage(data.message, 'error');
+            }
+
+        } catch (error) {
+            console.error('Error submitting form:', error);
+
+            // Fallback: Open email client
+            const fallbackMessage = `Failed to submit request: ${error.message}. Opening email client...`;
+            showMessage(fallbackMessage, 'error');
+
+            setTimeout(() => {
+                const subject = encodeURIComponent('Premium AI Telugu Support Request');
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+                window.location.href = `mailto:premiumaitelugu@gmail.com?subject=${subject}&body=${body}`;
+            }, 2000);
+        } finally {
+            // Re-enable button
+            submitButton.disabled = false;
+            submitButton.textContent = 'Submit Request';
+        }
+    });
+
+    function showMessage(message, type) {
+        // Remove existing message
+        const existingMessage = document.querySelector('.message-notification');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+
+        // Create message element
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message-notification ${type}`;
+        messageDiv.textContent = message;
+
+        // Style the message
+        Object.assign(messageDiv.style, {
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            padding: '15px 20px',
+            borderRadius: '8px',
+            fontWeight: '500',
+            zIndex: '10000',
+            maxWidth: '400px',
+            wordWrap: 'break-word',
+            animation: 'slideIn 0.3s ease'
+        });
+
+        if (type === 'success') {
+            messageDiv.style.backgroundColor = '#4CAF50';
+            messageDiv.style.color = 'white';
+        } else {
+            messageDiv.style.backgroundColor = '#f44336';
+            messageDiv.style.color = 'white';
+        }
+
+        // Add to page
+        document.body.appendChild(messageDiv);
+
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            if (messageDiv.parentNode) {
+                messageDiv.parentNode.removeChild(messageDiv);
+            }
+        }, 5000);
+    }
+
+    // Add CSS for message animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .message-notification {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    `;
+    document.head.appendChild(style);
+});
+</script>
+
+</body>
+</html>

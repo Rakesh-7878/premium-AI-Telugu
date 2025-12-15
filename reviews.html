@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviews | Premium AI Telugu</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: #0a0a0a;
+        font-family: 'Poppins', sans-serif;
+        color: #eaeaea;
+    }
+
+    header {
+        background: #111;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 1px solid #222;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .container {
+        max-width: 850px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+
+    .review-box {
+        background: #141414;
+        padding: 25px;
+        border-radius: 16px;
+        border: 1px solid #222;
+        margin-bottom: 20px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .name {
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .stars {
+        color: #ffd700;
+        font-size: 18px;
+    }
+
+    .message {
+        margin-top: 10px;
+        font-size: 15px;
+        color: #cfcfcf;
+        line-height: 1.6;
+    }
+
+    .review-actions {
+        margin-top: 15px;
+        display: flex;
+        gap: 15px;
+    }
+
+    .btn {
+        background: #1b1b1b;
+        padding: 10px 18px;
+        border-radius: 10px;
+        border: 1px solid #2a2a2a;
+        cursor: pointer;
+        font-size: 14px;
+        color: #eaeaea;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        transform: scale(1.06);
+        background: #222;
+    }
+
+    .heart {
+        color: #ff4c4c;
+        font-size: 18px;
+        margin-right: 6px;
+    }
+
+    .like {
+        color: #4c8bff;
+        font-size: 18px;
+        margin-right: 6px;
+    }
+
+    /* Like/Heart Animation Styles */
+    .btn.clicked {
+        animation: buttonPulse 0.6s ease;
+    }
+
+    .btn.clicked .like,
+    .btn.clicked .heart {
+        animation: iconBounce 0.8s ease;
+    }
+
+    .emoji-particle {
+        position: absolute;
+        font-size: 32px;
+        pointer-events: none;
+        z-index: 10000;
+        animation: emojiBurst 2.5s ease-out forwards;
+        user-select: none;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Improved review ordering and spacing */
+    .review-box {
+        margin-bottom: 25px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .review-box:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    }
+
+    .review-box:nth-child(odd) {
+        margin-right: 0;
+    }
+
+    .review-box:nth-child(even) {
+        margin-left: 0;
+    }
+
+    /* Animations */
+    @keyframes buttonPulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+
+    @keyframes iconBounce {
+        0%, 100% { transform: scale(1); }
+        25% { transform: scale(1.3) rotate(-10deg); }
+        50% { transform: scale(1.4) rotate(10deg); }
+        75% { transform: scale(1.3) rotate(-5deg); }
+    }
+
+    @keyframes emojiBurst {
+        0% {
+            transform: translate(0, 0) scale(0.5) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            transform: translate(calc(var(--distance) * 0.1), calc(var(--distance) * -0.1)) scale(1.5) rotate(45deg);
+            opacity: 1;
+        }
+        25% {
+            transform: translate(calc(var(--distance) * 0.3), calc(var(--distance) * -0.2)) scale(1.8) rotate(90deg);
+            opacity: 1;
+        }
+        40% {
+            transform: translate(calc(var(--distance) * 0.6), calc(var(--distance) * -0.4)) scale(1.4) rotate(180deg);
+            opacity: 0.95;
+        }
+        60% {
+            transform: translate(calc(var(--distance) * 0.8), calc(var(--distance) * -0.7)) scale(1.1) rotate(270deg);
+            opacity: 0.8;
+        }
+        80% {
+            transform: translate(calc(var(--distance) * 0.9), calc(var(--distance) * -0.9)) scale(0.8) rotate(360deg);
+            opacity: 0.6;
+        }
+        100% {
+            transform: translate(var(--distance), calc(var(--distance) * -1.2)) scale(0.2) rotate(540deg);
+            opacity: 0;
+        }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .container {
+            padding: 15px;
+        }
+
+        .review-box {
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Premium AI Telugu - User Reviews</h1>
+</header>
+
+<div class="container">
+    <!-- 10 Unique Reviews in Proper Order -->
+
+    <div class="review-box">
+        <div class="review-header"><div class="name">Rahul</div><div class="stars">★★★★★</div></div>
+        <div class="message">చాలా బావుంది అన్నా! నీ YouTube వీడియోలకు ఇవి సూపర్ ప్రాంప్ట్స్. నాకెంతో ఉపయోగమయ్యాయి.</div>
+        <div class="review-actions"><button class="btn"><span class="like">👍</span>Like</button><button class="btn"><span class="heart">❤️</span>Love</button></div>
+    </div>
+
+    <div class="review-box">
+        <div class="review-header"><div class="name">Rakesh</div><div class="stars">★★★★★</div></div>
+        <div class="message">నీ AI వీడియో ఐడియాస్ వలన నా ఛానెల్ కి మంచి బూస్ట్ వచ్చింది. Thanks bro!</div>
+        <div class="review-actions"><button class="btn"><span class="like">👍</span>Like</button><button class="btn"><span class="heart">❤️</span>Love</button></div>
+    </div>
+
+    <div class="review-box">
+        <div class="review-header"><div class="name">Jeggu</div><div class="stars">★★★★☆</div></div>
+        <div class="message">అన్నా, నీ political AI prompts చాలా next level. వీడియోలు కూడా virals అవుతున్నాయి.</div>
+        <div class="review-actions"><button class="btn"><span class="like">👍</span>Like</button><button class="btn"><span class="heart">❤️</span>Love</button></div>
+    </div>
+
+    <div class="review-box">
+        <div class="review-header"><div class="name">Upendra</div><div class="stars">★★★★★</div></div>
+        <div class="message">Dark theme website feel చాలా premium గా ఉంది. నీ YouTube tips కూడా super bro.</div>
+        <div class="review-actions"><button class="btn"><span class="like">👍</span>Like</button><button class="btn"><span class="heart">❤️</span>Love</button></div>
+    </div>
+
+    <div class="review-box">
+        <div class="review-header"><div class="name">Venkey</div><div class="stars">★★★★☆</div></div>
+        <div class="message">YT shorts కోసం ఇచ్చిన AI political prompts చాలా బావున్నాయి అన్నా. Useful!</div>
+        <div class="review-actions"><button class="btn"><span class="like">👍</span>Like</button><button class="btn"><span class="heart">❤️</span>Love</button></div>
+    </div>
+
+    <div class="review-box">
+        <div class="review-header"><div class="name">Shive</div><div class="stars">★★★★★</div></div>
+        <div class="message">నీ content creator support చాలా genuine గా ఉంది. Prompts perfect గా పని చేశాయి.</div>
+        <div class="review-actions"><button class="btn"><span class="like">👍</span>Like</button><button class="btn"><span class="heart">❤️</span>Love</button></div>
+    </div>
+
+    <div class="review-box">
+        <div class="review-header"><div class="name">Vinay</div><div class="stars">★★★★★</div></div>
+        <div class="message">AI వీడియో ఎడిటింగ్ కి నీ వీడియోస్ చాలా బావుంటాయి. ఈ వెబ్సైట్ కూడా next level!</div>
+        <div class="review-actions"><button class="btn"><span class="like">👍</span>Like</button><button class="btn"><span class="heart">❤️</span>Love</button></div>
+    </div>
+
+    <div class="review-box">
+        <div class="review-header"><div class="name">Vijay</div><div class="stars">★★★★☆</div></div>
+        <div class="message">ఐడియాస్ చాలా clean గా explain చేస్తావ్ bro. YouTube creators కు చాలా useful.</div>
+        <div class="review-actions"><button class="btn"><span class="like">👍</span>Like</button><button class="btn"><span class="heart">❤️</span>Love</button></div>
+    </div>
+
+    <div class="review-box">
+        <div class="review-header"><div class="name">Ram</div><div class="stars">★★★★★</div></div>
+        <div class="message">Superb prompts bro! నా వీడియో కి 20k views వచ్చాయి just because of your idea.</div>
+        <div class="review-actions"><button class="btn"><span class="like">👍</span>Like</button><button class="btn"><span class="heart">❤️</span>Love</button></div>
+    </div>
+
+    <div class="review-box">
+        <div class="review-header"><div class="name">Bunny</div><div class="stars">★★★★★</div></div>
+        <div class="message">AI sarpanch prompts fire bro! నా channel కి boost ఇచ్చాయి.❤️🔥</div>
+        <div class="review-actions"><button class="btn"><span class="like">👍</span>Like</button><button class="btn"><span class="heart">❤️</span>Love</button></div>
+    </div>
+
+</div>
+
+<script>
+    // Like and Heart Button Animation Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all buttons
+        const buttons = document.querySelectorAll('.btn');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Add clicked class for button animation
+                this.classList.add('clicked');
+
+                // Remove clicked class after animation
+                setTimeout(() => {
+                    this.classList.remove('clicked');
+                }, 600);
+
+                // Create massive particle effect
+                createParticles(this);
+
+                // Toggle active state (for visual feedback)
+                this.classList.toggle('active');
+
+                // Update button text if needed
+                updateButtonText(this);
+            });
+        });
+
+        function createParticles(button) {
+            const reviewBox = button.closest('.review-box');
+            const rect = button.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            // Determine particle type
+            const isLike = button.querySelector('.like');
+            const particleEmoji = isLike ? '👍' : '❤️';
+
+            // Create multiple emoji particles bursting out
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'emoji-particle';
+                particle.textContent = particleEmoji;
+                particle.style.left = centerX + 'px';
+                particle.style.top = centerY + 'px';
+
+                // Random angle and distance for burst effect
+                const angle = (Math.random() * Math.PI * 2);
+                const distance = 150 + Math.random() * 200; // Much larger burst radius
+                const velocity = 3 + Math.random() * 4;
+
+                particle.style.setProperty('--angle', angle + 'rad');
+                particle.style.setProperty('--distance', distance + 'px');
+                particle.style.setProperty('--velocity', velocity);
+
+                // Random rotation for more dynamic effect
+                const rotation = Math.random() * 360;
+                particle.style.transform = `rotate(${rotation}deg)`;
+
+                // Add some randomness to animation timing
+                const delay = Math.random() * 0.2;
+                particle.style.animationDelay = delay + 's';
+                particle.style.animationDuration = (2 + Math.random() * 0.5) + 's';
+
+                document.body.appendChild(particle);
+
+                // Remove particle after animation (longer duration)
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 3000);
+            }
+        }
+
+        function updateButtonText(button) {
+            const span = button.querySelector('span');
+            const textNode = button.lastChild;
+
+            if (button.classList.contains('active')) {
+                // Add +1 effect
+                const plusOne = document.createElement('span');
+                plusOne.textContent = ' +1';
+                plusOne.style.color = '#4CAF50';
+                plusOne.style.fontWeight = 'bold';
+                plusOne.style.animation = 'fadeInOut 1s ease forwards';
+
+                button.appendChild(plusOne);
+
+                setTimeout(() => {
+                    if (plusOne.parentNode) {
+                        plusOne.parentNode.removeChild(plusOne);
+                    }
+                }, 1000);
+            }
+        }
+
+        // Add CSS for additional animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInOut {
+                0% { opacity: 0; transform: scale(0.5); }
+                50% { opacity: 1; transform: scale(1.2); }
+                100% { opacity: 0; transform: scale(0.8); }
+            }
+
+
+            .btn.active {
+                background: #2a2a2a !important;
+                border-color: #4CAF50 !important;
+                box-shadow: 0 0 15px rgba(76, 175, 80, 0.3) !important;
+            }
+
+            .btn.active .like {
+                color: #4CAF50 !important;
+                text-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+            }
+
+            .btn.active .heart {
+                color: #ff6b6b !important;
+                text-shadow: 0 0 8px rgba(255, 107, 107, 0.5);
+            }
+
+            .emoji-particle {
+                --angle: 0rad;
+                --distance: 200px;
+                --velocity: 3;
+                transform-origin: center center;
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            }
+
+            /* Add glow effect to active buttons */
+            .btn.active::before {
+                content: '';
+                position: absolute;
+                top: -2px;
+                left: -2px;
+                right: -2px;
+                bottom: -2px;
+                background: linear-gradient(45deg, #4CAF50, #81C784);
+                border-radius: 12px;
+                z-index: -1;
+                opacity: 0.3;
+                animation: glowPulse 1.5s ease-in-out infinite alternate;
+            }
+
+            @keyframes glowPulse {
+                from { opacity: 0.3; transform: scale(1); }
+                to { opacity: 0.6; transform: scale(1.02); }
+            }
+        `;
+        document.head.appendChild(style);
+    });
+</script>
+
+</body>
+</html>

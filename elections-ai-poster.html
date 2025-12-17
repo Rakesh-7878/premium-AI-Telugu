@@ -257,36 +257,215 @@
             }
         }
 
-        /* Mobile responsive */
-        @media (max-width: 768px) {
+        /* ===== COMPREHENSIVE RESPONSIVE DESIGN ===== */
+
+        /* Extra Small Devices (Phones < 576px) */
+        @media (max-width: 575.98px) {
+            html {
+                font-size: 14px;
+            }
+
+            /* Header */
+            header {
+                padding: 15px;
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .page-title h1 {
+                font-size: 2rem;
+            }
+
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+
+            /* Hero Section */
             .article-hero {
-                padding: 80px 25px 60px 25px;
+                padding: 60px 20px 40px 20px;
+                min-height: auto;
                 height: auto;
-                min-height: 100vh;
             }
 
             .hero-content {
-                padding: 0;
-            }
-
-            .hero-title-section {
-                margin-bottom: 30px;
+                padding: 20px;
             }
 
             .article-hero h1 {
-                font-size: 2.5rem;
-                margin-bottom: 20px;
-            }
-
-            .hero-paragraphs-section {
-                gap: 15px;
+                font-size: 2rem;
+                margin-bottom: 15px;
             }
 
             .article-hero p {
-                font-size: 1.4rem;
-                line-height: 1.7;
-                margin-bottom: 0;
-                text-align: justify;
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 15px;
+                text-align: left;
+            }
+
+            /* Feature Cards */
+            .features-section {
+                padding: 40px 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .feature-card {
+                padding: 20px;
+            }
+
+            .feature-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            /* CTA Section */
+            .cta-section {
+                padding: 40px 20px;
+                margin: 40px 20px;
+            }
+
+            .cta-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            /* Footer */
+            footer {
+                padding: 25px 15px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .social-links {
+                gap: 12px;
+            }
+
+            .social-link {
+                width: 40px;
+                height: 40px;
+            }
+
+            .copyright {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Small Devices (Tablets 576px - 767px) */
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            html {
+                font-size: 15px;
+            }
+
+            header {
+                padding: 20px;
+            }
+
+            .page-title h1 {
+                font-size: 2.2rem;
+            }
+
+            .article-hero {
+                padding: 70px 25px 50px 25px;
+            }
+
+            .article-hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .cta-section {
+                padding: 50px 25px;
+                margin: 50px 25px;
+            }
+
+            .footer-links {
+                gap: 18px;
+            }
+        }
+
+        /* Medium Devices (Tablets 768px - 991px) */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            html {
+                font-size: 16px;
+            }
+
+            .article-hero {
+                padding: 80px 30px 60px 30px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .cta-buttons {
+                gap: 20px;
+            }
+        }
+
+        /* Large Devices (Desktops 992px+) */
+        @media (min-width: 992px) {
+            .article-hero {
+                padding: 100px 40px 80px 40px;
+            }
+
+            .features-section {
+                padding: 60px 40px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .cta-section {
+                padding: 70px 40px;
+                margin: 70px 40px;
+            }
+        }
+
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .social-link:hover,
+            .back-btn:hover,
+            button:hover {
+                transform: none;
+            }
+
+            .social-link,
+            .back-btn,
+            button,
+            .cta-button {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        /* High DPI screens */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .feature-icon,
+            .social-icon {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+        }
                 width: 138%;
                 max-width: none;
                 margin-left: 0;
@@ -320,7 +499,9 @@
     <!-- Back Button -->
     <header>
         <div class="logo-container">
-            <img src="premium logo.jpg" alt="Logo" class="logo-img">
+            <a href="index.html" class="logo-link">
+                <img src="premium logo.jpg" alt="Premium AI Telugu - Home" class="logo-img">
+            </a>
         </div>
 
         <div class="marquee-container">
